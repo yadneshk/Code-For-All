@@ -3,6 +3,7 @@
 
 A simple text editor built using Python
 Python 2.7 is used
+Tested on Fedora 26.
 
 ## Requirement
 ```sh
