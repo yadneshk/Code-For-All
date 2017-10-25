@@ -1,6 +1,6 @@
 from Tkinter import *
 import tkFileDialog
-
+import tkMessageBox
 def donothing():
     filewin = Toplevel(root)
     button = Button(filewin, text="Do nothing button")
@@ -19,9 +19,13 @@ def open_file():
         obj = open(str(open_diag),"r")
         text.delete("1.0",END)
         text.insert("1.0",obj.read())
-        
-        print("here")
         obj.close()
+
+def new_file():
+	if(len(text.get("1.0",END)) > 1):
+		tkMessageBox.showinfo("Code For All", "Please save your existing text")
+		save_file()
+	text.delete("1.0",END)
 
 root = Tk()
 root.title("Code For All")
@@ -30,7 +34,7 @@ root.geometry("%dx%d+0+0" % (w, h))
 menubar = Menu(root)
 
 filemenu = Menu(menubar, tearoff=0)
-filemenu.add_command(label="New", command=donothing)
+filemenu.add_command(label="New", command=new_file)
 filemenu.add_command(label="Open", command=open_file)
 filemenu.add_command(label="Save", command=save_file)
 filemenu.add_command(label="Save as...", command=donothing)
