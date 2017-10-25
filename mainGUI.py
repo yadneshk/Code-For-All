@@ -17,7 +17,10 @@ def open_file():
     open_diag = tkFileDialog.askopenfilename()
     if open_diag:
         obj = open(str(open_diag),"r")
-        text.insert(END,obj.read())
+        text.delete("1.0",END)
+        text.insert("1.0",obj.read())
+        
+        print("here")
         obj.close()
 
 root = Tk()
